@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <style>
+        #activities {
+            font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+        #activities td, #activities th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+        #activities tr:nth-child(even){background-color: #f2f2f2;}
+        #activities tr:hover {background-color: #ddd;}
+        #activities th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #4CAF50;
+            color: white;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <title>Activities</title>
+</head>
+<body>
+<div th:switch="${activities}">
+    <h2 th:case="null">No activities yet!</h2>
+    <div th:case="*">
+        <h2>Activities</h2>
+        <table id="activities">
+            <thead>
+            <tr>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Owner</th>
+                <th>Creation date</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="activity : ${activities}">
+                <td th:text="${activity.title}"></td>
+                <td th:text="${activity.description}"></td>
+                <td th:text="${activity.username}"></td>
+                <td th:text="${#dates.format(activity.creationDate, 'dd-MMM-yyyy')}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <p><a href="/fixActivities">fix activities</a></p>
+</div>
+
+</body>
+</html>
