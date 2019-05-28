@@ -61,7 +61,7 @@ public class ActivityDAOServiceTest {
     public void testFindAllActivitiesWithProcedureCall() {
 
         // Etant donné les activités d'initialisation et une activité en plus
-    	Activity activity = activityService.addActivity("Une activité nouvelle", "héhé", null);
+    	activityService.addActivity("Une activité nouvelle", "héhé", null);
 
         // quand on récupère toutes les activités
         Map<String, List<Activity>> param = new HashMap<>();
@@ -82,7 +82,7 @@ public class ActivityDAOServiceTest {
     public void testFindAllActivitiesWithSQLCall() {
 
         // Etant donné les activités d'initialisation et une activité en plus
-    	Activity activity = activityService.addActivity("Une activité nouvelle", "héhé", null);
+    	activityService.addActivity("Une activité nouvelle", "héhé", null);
 
         // quand on récupère toutes les activités via un curseur
         List<Activity> activityList = activityService.findAllActivities();
